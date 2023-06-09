@@ -1,0 +1,151 @@
+----------------------------------
+-- Autor: Ana Carolina Xavier   --
+-- Turma: 11                    --
+-- Data: 17/11/2022             --
+-- Versão: 3                    --
+----------------------------------
+
+DROP TABLE Pessoas              CASCADE CONSTRAINTS;
+DROP TABLE Guardas              CASCADE CONSTRAINTS;
+DROP TABLE Celas                CASCADE CONSTRAINTS;
+DROP TABLE Detentos             CASCADE CONSTRAINTS;
+DROP TABLE Visitantes           CASCADE CONSTRAINTS;
+DROP TABLE Visita               CASCADE CONSTRAINTS;
+DROP TABLE Agentes              CASCADE CONSTRAINTS;
+DROP TABLE Cronograma           CASCADE CONSTRAINTS;
+DROP TABLE HorariosDeCronograma CASCADE CONSTRAINTS;
+
+-- Tabela Pessoas (Herança para agente, guarda e detento)
+CREATE TABLE Pessoas(
+    cpf  CHAR(11)      NOT NULL,
+    nome VARCHAR2(30)  NOT NULL,
+    
+    CONSTRAINT PK_Pessoas PRIMARY KEY(cpf)
+)
+
+-- Herança de Pessoas
+CREATE TABLE Guardas(
+    cpf_guarda  CHAR(11)     NOT NULL,
+    cod_nome    VARCHAR2(20) NOT NULL,
+    
+    CONSTRAINT PK_Guardas PRIMARY KEY(cpf_guarda),
+    CONSTRAINT FK_Guardas FOREIGN KEY(cpf_guarda) REFERENCES Pessoas(cpf)
+)
+
+CREATE TABLE Celas(
+    numeracao   NUMERIC(4) NOT NULL,
+    cpf_guarda  CHAR(11)   NOT NULL,
+    ocupacao    NUMERIC(10),
+    
+    CONSTRAINT UK_Num        UNIQUE(numeracao),
+    CONSTRAINT PK_Celas      PRIMARY KEY(numeracao, cpf_guarda),
+    CONSTRAINT FK_CPF_guarda FOREIGN KEY(cpf_guarda) REFERENCES Guardas(cpf_guarda)
+)
+
+-- Herança de Pessoas
+CREATE TABLE Detentos(
+    cpf_det   CHAR(11)   NOT NULL,
+    cod_penin CHAR(10)   NOT NULL,
+    numeracao NUMERIC(4) NOT NULL,
+    idade     NUMERIC(3),
+    
+    CONSTRAINT PK_Detentos       PRIMARY KEY(cpf_det),
+    CONSTRAINT FK_Detentos_cela  FOREIGN KEY(numeracao) REFERENCES Celas(numeracao),
+    CONSTRAINT FK_Detentos_cpf   FOREIGN KEY(cpf_det)  REFERENCES Pessoas(cpf)
+)
+
+-- Entidade externa (não é herança de Pessoas)
+CREATE TABLE Visitantes(
+     cpf_visi    CHAR(11)     NOT NULL,
+     nome        VARCHAR2(30) NOT NULL,
+     grau_parent NUMERIC(1)   NOT NULL,
+     
+     CONSTRAINT PK_Visitantes PRIMARY KEY(cpf_visi)
+)
+
+-- Entidade associativa
+CREATE TABLE Visita(
+    cpf_det   CHAR(11)   NOT NULL,
+    cpf_visi  CHAR(11)   NOT NULL,
+    ident     NUMERIC(4) NOT NULL,
+    
+    CONSTRAINT UK_ident         UNIQUE(ident),
+    CONSTRAINT PK_Visita        PRIMARY KEY(cpf_det, cpf_visi, ident),
+    CONSTRAINT FK_CPF_detento   FOREIGN KEY(cpf_det)  REFERENCES Detentos(cpf_det),
+    CONSTRAINT FK_CPF_visitante FOREIGN KEY(cpf_visi) REFERENCES Visitantes(cpf_visi)
+)
+
+-- Herança de Pessoas
+CREATE TABLE Agentes(
+    cpf_agen   CHAR(11)     NOT NULL,
+    cod_nome   VARCHAR2(20) NOT NULL,
+    
+    CONSTRAINT PK_Agentes PRIMARY KEY(cpf_agen),
+    CONSTRAINT FK_Agentes FOREIGN KEY(cpf_agen) REFERENCES Pessoas(cpf)
+)
+
+CREATE TABLE Cronograma(
+    cod_cronograma NUMERIC(4) NOT NULL,
+    CPF_agen       CHAR(11)   NOT NULL,
+    
+    CONSTRAINT PK_Cronograma  PRIMARY KEY(cod_cronograma),
+    CONSTRAINT FK_CPF_agen    FOREIGN KEY(cpf_agen) REFERENCES Agentes(cpf_agen)
+)
+
+-- Entidade associativa
+CREATE TABLE HorariosDeCronograma(
+    CPF_det         CHAR(11)   NOT NULL,
+    cod_cronograma  NUMERIC(4) NOT NULL,
+    cafe_manha      DATE,
+    cafe_tarde      DATE,
+    almoco          DATE,
+    janta           DATE,
+    lazer           DATE,
+    
+    CONSTRAINT FK_CPF_det    FOREIGN KEY(cpf_det)        REFERENCES Detentos(cpf_det),
+    CONSTRAINT FK_cod_crono  FOREIGN KEY(cod_cronograma) REFERENCES Cronograma(cod_cronograma)
+)
+
+-- Inserção de dados no sistema
+-- --> Guardas
+INSERT INTO Pessoas(nome, cpf) VALUES('Roberto', 91530060921);
+INSERT INTO Guardas(cpf_guarda, cod_nome)  VALUES(91530060921, 'Espinha');
+INSERT INTO Pessoas(nome, cpf) VALUES('Fernanda', 87456372875);
+INSERT INTO Guardas(cpf_guarda, cod_nome)  VALUES(87456372875, 'Batata');
+
+-- --> Celas
+INSERT INTO Celas(cpf_guarda, numeracao, ocupacao) VALUES(87456372875, 563, 2);
+INSERT INTO Celas(cpf_guarda, numeracao, ocupacao) VALUES(91530060921, 678, 1);
+
+-- --> Detentos
+INSERT INTO Pessoas(nome, cpf) VALUES('Felipe', 98456375647);
+INSERT INTO Detentos(cpf_det, numeracao, cod_penin, idade) VALUES(98456375647, 563, 'PEN876', 21);
+INSERT INTO Pessoas(nome, cpf) VALUES('Marcelo', 23095647856);
+INSERT INTO Detentos(cpf_det, numeracao, cod_penin, idade) VALUES(23095647856, 678, 'VG13', 63);
+INSERT INTO Pessoas(nome, cpf) VALUES('Claudio', 56748356749);
+INSERT INTO Detentos(cpf_det, numeracao, cod_penin, idade) VALUES(56748356749, 563, 'LPA031', 34);
+
+-- --> Agentes
+INSERT INTO Pessoas(nome, cpf) VALUES('Marcela', 67245378954);
+INSERT INTO Agentes(cpf_agen, cod_nome) VALUES(67245378954, 'Abelha');
+INSERT INTO Pessoas(nome, cpf) VALUES('Roselia', 09432567453);
+INSERT INTO Agentes(cpf_agen, cod_nome) VALUES(09432567453, 'Lapis');
+
+-- --> Cronograma
+INSERT INTO Cronograma(cod_cronograma, cpf_agen) VALUES(6532, 67245378954);
+INSERT INTO Cronograma(cod_cronograma, cpf_agen) VALUES(8534, 09432567453);
+INSERT INTO Cronograma(cod_cronograma, cpf_agen) VALUES(9843, 67245378954);
+
+-- --> Horarios de Cronograma
+INSERT INTO HorariosDeCronograma(cpf_det, cod_cronograma, cafe_manha, almoco, janta) VALUES(98456375647, 6532, TO_DATE('2022/12/01 08:15:00', 'yyyy/mm/dd hh24:mi:ss'), TO_DATE('2022/12/01 12:30:00', 'yyyy/mm/dd hh24:mi:ss'), TO_DATE('2022/12/01 18:45:00', 'yyyy/mm/dd hh24:mi:ss'));
+INSERT INTO HorariosDeCronograma(cpf_det, cod_cronograma, cafe_manha, almoco, cafe_tarde, janta, lazer) VALUES(23095647856, 6532, TO_DATE('2022/12/01 08:15:00', 'yyyy/mm/dd hh24:mi:ss'), TO_DATE('2022/12/01 12:30:00', 'yyyy/mm/dd hh24:mi:ss'), TO_DATE('2022/12/01 15:15:00', 'yyyy/mm/dd hh24:mi:ss'),TO_DATE('2022/12/01 18:45:00', 'yyyy/mm/dd hh24:mi:ss'), TO_DATE('2022/12/01 10:00:00', 'yyyy/mm/dd hh24:mi:ss'));
+INSERT INTO HorariosDeCronograma(cpf_det, cod_cronograma, cafe_manha, cafe_tarde, janta) VALUES(56748356749, 6532, TO_DATE('2022/12/01 08:15:00', 'yyyy/mm/dd hh24:mi:ss'), TO_DATE('2022/12/01 15:30:00', 'yyyy/mm/dd hh24:mi:ss'), TO_DATE('2022/12/01 19:00:00', 'yyyy/mm/dd hh24:mi:ss'));
+
+-- --> Visitantes
+INSERT INTO Visitantes(nome, cpf_visi, grau_parent) VALUES('Diogo', 09567467345, 2);
+INSERT INTO Visitantes(nome, cpf_visi, grau_parent) VALUES('Alice', 87567456734, 1);
+
+-- --> Visita
+INSERT INTO Visita(cpf_det, cpf_visi, ident) VALUES(23095647856, 09567467345, 254);
+INSERT INTO Visita(cpf_det, cpf_visi, ident) VALUES(23095647856, 87567456734, 376);
+
