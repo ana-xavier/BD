@@ -1,0 +1,301 @@
+[
+    {
+        "cod_emprestimo": "0765",
+        "Obra":{
+            "codigo": "890",
+            "titulo": "Rastro de Fogo",
+            "autor": "Kim Jeongyen",
+            "nro_paginas": 289,
+            "tipo_obra": "Revista"
+        },
+        "Pessoa":{
+            "cpf": "6012179070",
+            "nome": "Ana Carolina Xavier",
+            "email": "a.xavier004@edu.pucrs.br",
+            "telefone": "985681353",
+            "nro_matricula": "22103003",
+            "nro_creditos_concluidos": 50
+        },
+        "data_retirada":{
+            "dia": 20,
+            "mes": 5,
+            "ano": 2023
+        },
+        "data_devolucao":{
+            "dia": 27,
+            "mes": 5,
+            "ano": 2023
+        },
+        "tipo_pessoa": "A"
+    },
+    {
+        "cod_emprestimo": "7832",
+        "Obra":{
+            "codigo": "164",
+            "titulo": "Tempestade de Aço",
+            "autor": "Matthew Tools",
+            "nro_paginas": 371,
+            "tipo_obra": "Revista"
+        },
+        "Pessoa":{
+            "cpf": "89567545643",
+            "nome": "Maria Eduarda Oliveira",
+            "email": "dudu@edu.com",
+            "telefone": "987654311",
+            "nro_matricula": "22111153",
+            "nro_creditos_concluidos": 38
+        },
+        "data_retirada":{
+            "dia": 12,
+            "mes": 3,
+            "ano": 2023
+        },
+        "data_devolucao":{
+            "dia": 19,
+            "mes": 3,
+            "ano": 2023
+        },
+        "tipo_pessoa": "A"
+    },
+    {
+        "cod_emprestimo": "1098",
+        "Obra":{
+            "codigo": "789",
+            "titulo": "História III",
+            "autor": "Amelia Rose",
+            "nro_paginas": 765,
+            "tipo_obra": "Artigo"
+        },
+        "Pessoa":{
+            "cpf": "09376895643",
+            "nome": "Carlos Eduardo Oliveira",
+            "email": "kaka@edu.com",
+            "nro_matricula": "22111154",
+            "nro_creditos_concluidos": 38
+        },
+        "data_retirada":{
+            "dia": 9,
+            "mes": 8,
+            "ano": 2022
+        },
+        "data_devolucao":{
+            "dia": 16,
+            "mes": 8,
+            "ano": 2022
+        },
+        "tipo_pessoa": "A"
+    },
+    {
+        "cod_emprestimo": "9831",
+        "Obra":{
+            "codigo": "342",
+            "titulo": "Flores Desabrocham",
+            "autor": "Joseph Murin",
+            "nro_paginas": 216,
+            "tipo_obra": "Livro"
+        },
+        "Pessoa":{
+            "cpf": "65478967856",
+            "nome": "Isadora Brust",
+            "email": "isa@edu.com",
+            "telefone": "985679643",
+            "nro_matricula": "22111167",
+            "nro_creditos_concluidos": 46
+        },
+        "data_retirada":{
+            "dia": 8,
+            "mes": 1,
+            "ano": 2023
+        },
+        "data_devolucao":{
+            "dia": 15,
+            "mes": 1,
+            "ano": 2023
+        },
+        "tipo_pessoa": "A"
+    },
+    {
+        "cod_emprestimo": "5673",
+        "Obra":{
+            "codigo": "675",
+            "titulo": "Entrelinhas do Coração",
+            "autor": "Beatriz Santos",
+            "nro_paginas": 436,
+            "tipo_obra": "Livro"
+        },
+        "Pessoa":{
+            "cpf": "86754365794",
+            "nome": "Ricardo Silva",
+            "email": "silva_ric@acad.com",
+            "telefone": "9811450923",
+            "nro_registro": "14004784",
+            "data_contratacao":{
+                "dia": 25,
+                "mes": 1,
+                "ano": 2014
+            }
+        },
+        "data_retirada":{
+            "dia": 1,
+            "mes": 5,
+            "ano": 2023
+        },
+        "data_devolucao":{
+            "dia": 15,
+            "mes": 5,
+            "ano": 2023
+        },
+        "tipo_pessoa": "P"
+    },
+    {
+        "cod_emprestimo": "1402",
+        "Obra":{
+            "codigo": "675",
+            "titulo": "Entrelinhas do Coração",
+            "autor": "Beatriz Santos",
+            "nro_paginas": 436,
+            "tipo_obra": "Livro"
+        },
+        "Pessoa":{
+            "cpf": "60112179070",
+            "nome": "Ana Carolina Xavier",
+            "email": "a.xavier004@edu.pucrs.br",
+            "telefone": "985681353",
+            "nro_matricula": "22103003",
+            "nro_creditos_concluidos": 50
+        },
+        "data_retirada":{
+            "dia": 6,
+            "mes": 10,
+            "ano": 2022
+        },
+        "data_devolucao":{
+            "dia": 13,
+            "mes": 10,
+            "ano": 2022
+        },
+        "tipo_pessoa": "A"
+    },
+    {
+        "cod_emprestimo": "1290",
+        "Obra":{
+            "codigo": "789",
+            "titulo": "História III",
+            "autor": "Amelia Rose",
+            "nro_paginas": 765,
+            "tipo_obra": "Artigo"
+        },
+        "Pessoa":{
+            "cpf": "01568398594",
+            "nome": "Laura Fernandes",
+            "email": "fernandes@acad.com",
+            "telefone": "987095643",
+            "nro_registro": "14004784",
+            "data_contratacao":{
+                "dia": 9,
+                "mes": 12,
+                "ano": 2017
+            }
+        },
+        "data_retirada":{
+            "dia": 2,
+            "mes": 7,
+            "ano": 2022
+        },
+        "data_devolucao":{
+            "dia": 16,
+            "mes": 7,
+            "ano": 2022
+        },
+        "tipo_pessoa": "P"
+    },
+    {
+        "cod_emprestimo": "7523",
+        "Obra":{
+            "codigo": "890",
+            "titulo": "Rastro de Fogo",
+            "autor": "Kim Jeongyeon",
+            "nro_paginas": 289,
+            "tipo_obra": "Revista"
+        },
+        "Pessoa":{
+            "cpf": "09376895643",
+            "nome": "Carlos Eduardo Oliveira",
+            "email": "kaka@edu.com",
+            "nro_matricula": "22111154",
+            "nro_creditos_concluidos": 38
+        },
+        "data_retirada":{
+            "dia": 18,
+            "mes": 12,
+            "ano": 2022
+        },
+        "data_devolucao":{
+            "dia": 25,
+            "mes": 12,
+            "ano": 2022
+        },
+        "tipo_pessoa": "A"
+    },
+    {
+        "cod_emprestimo": "8518",
+        "Obra":{
+            "codigo": "789",
+            "titulo": "História III",
+            "autor": "Amelia Rose",
+            "nro_paginas": 765,
+            "tipo_obra": "Artigo"
+        },
+        "Pessoa":{
+            "cpf": "10968467838",
+            "nome": "Sofia Mendes",
+            "email": "mendes998@acad.com",
+            "nro_registro": "12998765",
+            "data_contratacao":{
+                "dia": 12,
+                "mes": 5,
+                "ano": 2012
+            }
+        },
+        "data_retirada":{
+            "dia": 10,
+            "mes": 3,
+            "ano": 2023
+        },
+        "data_devolucao":{
+            "dia": 24,
+            "mes": 3,
+            "ano": 2023
+        },
+        "tipo_pessoa": "P"
+    },
+    {
+        "cod_emprestimo": "6853",
+        "Obra":{
+            "codigo": "342",
+            "titulo": "Flores Desabrocham",
+            "autor": "Joseph Murin",
+            "nro_paginas": 216,
+            "tipo_obra": "Livro"
+        },
+        "Pessoa":{
+            "cpf": "89567545643",
+            "nome": "Maria Eduarda Oliveira",
+            "email": "dudu@edu.com",
+            "telefone": "987654311",
+            "nro_matricula": "22111153",
+            "nro_creditos_concluidos": 38
+        },
+        "data_retirada":{
+            "dia": 14,
+            "mes": 6,
+            "ano": 2023
+        },
+        "data_devolucao":{
+            "dia": 21,
+            "mes": 6,
+            "ano": 2023
+        },
+        "tipo_pessoa": "A"
+    }
+]
